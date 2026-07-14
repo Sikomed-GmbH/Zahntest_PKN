@@ -117,11 +117,20 @@
   .hero-stats div b{font-size:1.7rem;font-weight:700;color:var(--green);display:block;line-height:1}
   .hero-stats div span{font-size:.82rem;color:var(--muted);letter-spacing:.02em}
   .hero-art{position:relative;display:flex;justify-content:center}
-  .emblem{width:min(420px,90%);filter:drop-shadow(0 26px 42px rgba(22,56,42,.22))}
+  .hero-photo-wrap{position:relative;width:min(540px,100%)}
+  .hero-photo{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;border-radius:24px;box-shadow:var(--shadow-lg);display:block}
+  .hero-badge{
+    position:absolute;left:-14px;bottom:24px;background:#fff;color:var(--green-dark);
+    border-radius:16px;box-shadow:var(--shadow);padding:.85em 1.1em;display:flex;align-items:center;gap:.7em;
+    font-size:.9rem;line-height:1.25;
+  }
+  .hero-badge svg{width:30px;height:30px;color:var(--green);flex:none}
+  .hero-badge b{color:var(--green)}
   @media(max-width:820px){
     .hero-inner{grid-template-columns:1fr;text-align:left}
-    .hero-art{order:-1;margin-bottom:.5rem}
-    .emblem{width:min(280px,66%)}
+    .hero-art{order:-1;margin-bottom:.5rem;justify-content:flex-start}
+    .hero-photo-wrap{width:min(460px,92%)}
+    .hero-badge{font-size:.82rem}
   }
 
   /* ---------- Trust strip ---------- */
@@ -212,6 +221,16 @@
   .disclaimer svg{width:1.2em;height:1.2em;flex:none;color:var(--green);margin-top:.15em}
 
   /* ---------- Services ---------- */
+  .svc-group{margin-top:3rem}
+  .svc-group:first-of-type{margin-top:0}
+  .group-head{display:flex;flex-direction:column;gap:.55rem;max-width:46rem;margin:0 auto 1.8rem;text-align:center}
+  .group-head h3{font-size:clamp(1.4rem,2.5vw,1.9rem);color:var(--green-dark)}
+  .group-head p{color:var(--muted);font-size:1.02rem}
+  .group-head p b{color:var(--green-dark)}
+  .pill{align-self:center;display:inline-flex;align-items:center;gap:.5em;padding:.42em 1em;border-radius:999px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em}
+  .pill svg{width:1.05em;height:1.05em}
+  .pill-prevent{background:var(--tint);color:var(--green)}
+  .pill-treat{background:#f6ead2;color:#9a6a1c}
   .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
   @media(max-width:860px){.grid{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.grid{grid-template-columns:1fr}}
@@ -219,8 +238,14 @@
   .svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--green-500)}
   .svc .ic{width:52px;height:52px;border-radius:14px;background:linear-gradient(150deg,var(--green),var(--green-deep));display:grid;place-items:center;margin-bottom:1em}
   .svc .ic svg{width:26px;height:26px;color:#fff}
+  .svc.treat:hover{border-color:#c9a25a}
+  .svc.treat .ic{background:linear-gradient(150deg,#c08a3e,#9a6a1c)}
   .svc h3{font-size:1.15rem;color:var(--green-dark);margin-bottom:.4em}
   .svc p{color:var(--muted);font-size:.96rem}
+  .price-note{margin-top:1.6rem;display:flex;justify-content:center}
+  .price-note .chip{display:inline-flex;align-items:center;gap:.75em;background:var(--tint);border:1px solid var(--tint-2);color:var(--green-dark);border-radius:14px;padding:.9em 1.35em;font-size:1.02rem;font-weight:500;text-align:left}
+  .price-note .chip svg{width:1.5em;height:1.5em;color:var(--green);flex:none}
+  .price-note .chip b{color:var(--green);font-weight:700;white-space:nowrap}
 
   /* ---------- Prophylaxe timeline ---------- */
   #prophylaxe{background:var(--green-dark);color:#fff}
@@ -244,11 +269,17 @@
   .sign span{color:var(--muted);font-size:.92rem}
 
   /* ---------- Team ---------- */
-  .team{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;max-width:820px;margin:0 auto}
+  .team{display:grid;grid-template-columns:repeat(2,1fr);gap:1.3rem;max-width:920px;margin:0 auto}
   @media(max-width:640px){.team{grid-template-columns:1fr}}
-  .doc{display:flex;gap:1.1em;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.5em}
-  .doc .av{width:66px;height:66px;border-radius:50%;flex:none;background:linear-gradient(150deg,var(--green),var(--green-deep));display:grid;place-items:center;color:#fff;font-size:1.35rem;font-weight:700}
-  .doc h3{font-size:1.15rem;color:var(--green-dark);margin-bottom:.15em}
+  .doc{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+  .doc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--green-500)}
+  .doc .media{height:236px;background:linear-gradient(150deg,var(--green),var(--green-deep))}
+  .doc .media img{width:100%;height:100%;object-fit:cover;display:block}
+  .doc .media.mono{display:grid;place-items:center}
+  .doc .media.mono span{color:#fff;font-size:2.7rem;font-weight:700;letter-spacing:.06em;opacity:.95}
+  .doc .body{padding:1.4em 1.5em}
+  .doc h3{font-size:1.18rem;color:var(--green-dark);margin-bottom:.2em}
+  .doc .role{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--green);font-weight:700;margin-bottom:.55em}
   .doc p{color:var(--muted);font-size:.92rem}
 
   /* ---------- CTA / contact ---------- */
@@ -328,31 +359,16 @@
       </div>
     </div>
     <div class="hero-art">
-      <!-- Emblem: Backenzahn im Hufeisen, Markengrün -->
-      <svg class="emblem" viewBox="0 0 400 400" fill="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="g-shoe" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#3a7d5a"/><stop offset="1" stop-color="#004e38"/>
-          </linearGradient>
-          <linearGradient id="g-tooth" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#eef4ef"/>
-          </linearGradient>
-        </defs>
-        <circle cx="200" cy="200" r="180" fill="rgba(35,84,59,.05)" stroke="rgba(35,84,59,.18)" stroke-width="1.5"/>
-        <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(35,84,59,.14)" stroke-width="1" stroke-dasharray="2 8"/>
-        <!-- Hufeisen -->
-        <path d="M120 300c-30-22-46-58-46-100 0-70 47-118 126-118s126 48 126 118c0 42-16 78-46 100"
-              fill="none" stroke="url(#g-shoe)" stroke-width="26" stroke-linecap="round"/>
-        <!-- Nagellöcher -->
-        <g fill="#16382a">
-          <circle cx="92" cy="196" r="4.5"/><circle cx="100" cy="150" r="4.5"/><circle cx="126" cy="115" r="4.5"/>
-          <circle cx="308" cy="196" r="4.5"/><circle cx="300" cy="150" r="4.5"/><circle cx="274" cy="115" r="4.5"/>
-        </g>
-        <!-- Backenzahn -->
-        <path d="M200 130c-34 0-52 20-52 50 0 20 7 33 10 58 3 22 5 52 17 52 10 0 9-27 14-43 2-8 4-13 11-13s9 5 11 13c5 16 4 43 14 43 12 0 14-30 17-52 3-25 10-38 10-58 0-30-18-50-52-50Z"
-              fill="url(#g-tooth)" stroke="#004e38" stroke-width="2"/>
-        <path d="M200 150c-16 0-24 9-24 22M200 150c16 0 24 9 24 22" stroke="#3a7d5a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      </svg>
+      <div class="hero-photo-wrap">
+        <picture>
+          <source srcset="assets/hero-horse.webp" type="image/webp">
+          <img class="hero-photo" src="assets/hero-horse.jpg" alt="Nahaufnahme des Mauls eines Pferdes" width="1600" height="1067" fetchpriority="high">
+        </picture>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4c-4 0-6 2.4-6 6 0 2.5 1 4 1.4 7 .4 2.7.7 5 1.9 5 1.2 0 1.1-3 1.7-5 .3-1 .6-1.6 1-1.6s.7.6 1 1.6c.6 2 .5 5 1.7 5 1.2 0 1.5-2.3 1.9-5 .4-3 1.4-4.5 1.4-7 0-3.6-2-6-6-6Z"/></svg>
+          <span>Zahn­gesundheit<br><b>beginnt hier</b></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -393,39 +409,65 @@
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Leistungen</span>
-      <h2>Rundum-Versorgung für das Pferdegebiss</h2>
-      <p>Modernste Medizintechnik trifft auf langjährige Erfahrung – für die bestmögliche Versorgung Ihres Pferdes.</p>
+      <h2>Zwei Wege zu einem gesunden Gebiss</h2>
+      <p>Wir unterscheiden klar zwischen der <strong>regelmässigen Vorsorge</strong>, damit Probleme gar nicht erst entstehen – und der <strong>gezielten Behandlung</strong>, wenn Ihr Pferd bereits Beschwerden zeigt.</p>
     </div>
-    <div class="grid">
-      <div class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14h16M6 14l-1 5M18 14l1 5M8 14l.5 4M16 14l-.5 4M12 14v5"/><path d="M4 14c0-5 3-8 8-8s8 3 8 8"/></svg></div>
-        <h3>Zahnkorrektur &amp; Raspeln</h3>
-        <p>Regelmässiges Abschleifen scharfer Kanten und Haken, die Zunge und Backenschleimhaut verletzen und das Kauen behindern.</p>
+
+    <!-- Gruppe 1: Prophylaxe / Vorsorge -->
+    <div class="svc-group reveal">
+      <div class="group-head">
+        <span class="pill pill-prevent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Regelmässig &amp; planbar</span>
+        <h3>Vorsorge &amp; Prophylaxe</h3>
+        <p>Routinemässige Kontrolle und Pflege in festen Intervallen – meist bequem bei Ihnen im Stall. So bleiben die Zähne gesund, bevor Schmerzen entstehen.</p>
       </div>
-      <div class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></div>
-        <h3>Kontrolle &amp; Diagnostik</h3>
-        <p>Vollständige Maulhöhlen-Untersuchung und 3D-Bildgebung des Kiefers – Diagnosen auf humanmedizinischem Niveau.</p>
+      <div class="grid">
+        <div class="svc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></div>
+          <h3>Zahnkontrolle &amp; Diagnostik</h3>
+          <p>Vollständige Kontrolle der Maulhöhle – bei Bedarf mit 3D-Bildgebung des Kiefers. Erkennt Probleme früh, oft bevor Sie etwas bemerken.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14h16M6 14l-1 5M18 14l1 5M8 14l.5 4M16 14l-.5 4M12 14v5"/><path d="M4 14c0-5 3-8 8-8s8 3 8 8"/></svg></div>
+          <h3>Zahnkorrektur &amp; Raspeln</h3>
+          <p>Regelmässiges Abschleifen scharfer Kanten und Haken, die Zunge und Backenschleimhaut verletzen und das Kauen behindern.</p>
+        </div>
+        <div class="svc">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4M16 3v4M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M9 14l2 2 4-4"/></svg></div>
+          <h3>Zahnstein &amp; Politur</h3>
+          <p>Entfernung von Zahnstein zur Vorbeugung von Zahnfleischentzündung und Parodontitis – schonend und gründlich.</p>
+        </div>
       </div>
-      <div class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4M16 3v4M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M9 14l2 2 4-4"/></svg></div>
-        <h3>Zahnstein &amp; Prophylaxe</h3>
-        <p>Entfernung von Zahnstein zur Vorbeugung von Zahnfleischentzündung und Parodontitis – im Stall oder in der Klinik.</p>
+      <div class="price-note">
+        <span class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          <span>Regelmässige Zahnprophylaxe bereits <b>ab CHF&nbsp;250</b>.</span>
+        </span>
       </div>
-      <div class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3.5 0-5 2-5 5 0 2 .8 3.2 1.2 5.5.3 2 .4 4.5 1.5 4.5.9 0 1-2 1.3-3.5"/><path d="M12 3c3.5 0 5 2 5 5 0 2-.8 3.2-1.2 5.5-.3 2-.4 4.5-1.5 4.5-.9 0-1-2-1.3-3.5"/><path d="M12 14v7"/></svg></div>
-        <h3>Zahnzwischenräume</h3>
-        <p>Behandlung veränderter oder entzündeter Zahnzwischenräume (Diastema) – häufige Ursache versteckter Schmerzen.</p>
+    </div>
+
+    <!-- Gruppe 2: Behandlung konkreter Beschwerden -->
+    <div class="svc-group reveal">
+      <div class="group-head">
+        <span class="pill pill-treat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg> Bei Beschwerden &amp; Befund</span>
+        <h3>Behandlung konkreter Beschwerden</h3>
+        <p>Zeigt Ihr Pferd Schmerzen oder Symptome – oder liefert der Selbsttest ein Warnsignal? Dann folgt eine gezielte Diagnostik und Therapie, rund um die Uhr auch im Notfall.</p>
       </div>
-      <div class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-4 0-6 2-6 6 0 3 1.5 4 2 7s.5 3 1.5 3M12 4c4 0 6 2 6 6 0 3-1.5 4-2 7"/><path d="M12 11v10M9 21h6"/></svg></div>
-        <h3>Wurzelbehandlung</h3>
-        <p>Bei Infektionen oder Abszessen an der Zahnwurzel – konservativ mit Antibiotika oder chirurgisch, je nach Befund.</p>
-      </div>
-      <div class="svc reveal">
-        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v5M9.5 10.5h5"/></svg></div>
-        <h3>24h-Notfalldienst</h3>
-        <p>Das Zahnzentrum ist über die Pferdeklinik AG rund um die Uhr, 365 Tage im Jahr, für Notfälle erreichbar.</p>
+      <div class="grid">
+        <div class="svc treat">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3.5 0-5 2-5 5 0 2 .8 3.2 1.2 5.5.3 2 .4 4.5 1.5 4.5.9 0 1-2 1.3-3.5"/><path d="M12 3c3.5 0 5 2 5 5 0 2-.8 3.2-1.2 5.5-.3 2-.4 4.5-1.5 4.5-.9 0-1-2-1.3-3.5"/><path d="M12 14v7"/></svg></div>
+          <h3>Zahnzwischenräume (Diastema)</h3>
+          <p>Behandlung veränderter oder entzündeter Zahnzwischenräume – eine häufige Ursache versteckter Schmerzen und von Futterstau.</p>
+        </div>
+        <div class="svc treat">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-4 0-6 2-6 6 0 3 1.5 4 2 7s.5 3 1.5 3M12 4c4 0 6 2 6 6 0 3-1.5 4-2 7"/><path d="M12 11v10M9 21h6"/></svg></div>
+          <h3>Wurzelbehandlung &amp; Abszesse</h3>
+          <p>Bei Infektionen an der Zahnwurzel – konservativ mit Antibiotika oder chirurgisch, je nach Befund und Schweregrad.</p>
+        </div>
+        <div class="svc treat">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-4 0-6 2.4-6 6 0 2.5 1 4 1.4 7 .4 2.7.7 5 1.9 5 1.2 0 1.1-3 1.7-5 .3-1 .6-1.6 1-1.6s.7.6 1 1.6c.6 2 .5 5 1.7 5 1.2 0 1.5-2.3 1.9-5 .4-3 1.4-4.5 1.4-7 0-3.6-2-6-6-6Z"/><path d="M4 4l16 16"/></svg></div>
+          <h3>EOTRH, Extraktionen &amp; Akutschmerz</h3>
+          <p>Diagnose und Therapie schmerzhafter Erkrankungen wie EOTRH sowie notwendige Zahnentfernungen – auch als 24h-Notfall.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -489,17 +531,35 @@
     </div>
     <div class="team">
       <div class="doc reveal">
-        <div class="av">SM</div>
-        <div>
+        <div class="media"><img src="assets/dr-moine.webp" alt="Dr. Sébastien Moine bei der Behandlung" width="900" height="675" loading="lazy" style="object-position:60% 42%"></div>
+        <div class="body">
           <h3>Dr. Sébastien Moine</h3>
+          <div class="role">Leitung Zahnzentrum</div>
           <p>International renommierter Zahnexperte – spezialisiert auf komplexe Zahn- und Kiefererkrankungen des Pferdes.</p>
         </div>
       </div>
       <div class="doc reveal">
-        <div class="av">CC</div>
-        <div>
+        <div class="media"><img src="assets/dr-czech.webp" alt="Dr. Christian Czech" width="900" height="675" loading="lazy" style="object-position:center 28%"></div>
+        <div class="body">
           <h3>Dr. Christian Czech</h3>
+          <div class="role">Geschäftsführung</div>
           <p>Geschäftsführer der Pferdeklinik Niederlenz und Mitverantwortlicher des Zahnzentrums.</p>
+        </div>
+      </div>
+      <div class="doc reveal">
+        <div class="media mono"><span>IM</span></div>
+        <div class="body">
+          <h3>Isabell Müller</h3>
+          <div class="role">Zahnzentrum-Team</div>
+          <p>Teil unseres Zahnzentrum-Teams – engagiert in der Betreuung und Behandlung Ihres Pferdes.</p>
+        </div>
+      </div>
+      <div class="doc reveal">
+        <div class="media mono"><span>TI</span></div>
+        <div class="body">
+          <h3>Toth Imre</h3>
+          <div class="role">Zahnzentrum-Team</div>
+          <p>Teil unseres Zahnzentrum-Teams – engagiert in der Betreuung und Behandlung Ihres Pferdes.</p>
         </div>
       </div>
     </div>
