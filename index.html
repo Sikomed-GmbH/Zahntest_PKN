@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahnzentrum für Pferde – Zahn-Selbsttest | Pferdeklinik Niederlenz</title>
+<meta name="description" content="Der Zahn-Selbsttest des Zahnzentrums der Pferdeklinik Niederlenz: In wenigen Minuten einschätzen, ob Ihr Pferd zum Zahnarzt sollte und wie oft eine Prophylaxe sinnvoll ist.">
+<style>
+  :root{
+    /* Brand palette – premium equine / dental */
+    --green-900:#12241f;
+    --green-800:#1b352d;
+    --green-700:#244a3d;
+    --green-600:#2f5f4e;
+    --green-500:#3d7a63;
+    --gold-600:#b7883f;
+    --gold-500:#c99b4f;
+    --gold-400:#d9b878;
+    --cream:#f7f3ea;
+    --cream-2:#efe8d8;
+    --paper:#fffdf8;
+    --ink:#1c1e1b;
+    --muted:#5d6560;
+    --line:#e2dccc;
+    --red-600:#b23b32;
+    --red-bg:#f7e5e2;
+    --amber-600:#b9822a;
+    --amber-bg:#f8ecd4;
+    --ok-600:#2f7d55;
+    --ok-bg:#e3f0e6;
+    --radius:18px;
+    --shadow-sm:0 1px 3px rgba(18,36,31,.08);
+    --shadow:0 18px 45px -20px rgba(18,36,31,.35);
+    --shadow-lg:0 40px 80px -30px rgba(18,36,31,.45);
+    --maxw:1180px;
+    --font:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --serif:"Georgia","Times New Roman",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img,svg{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.55em;
+    text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;
+    color:var(--gold-600);
+  }
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--gold-500)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.55em;
+    padding:.95em 1.7em;border-radius:999px;font-weight:600;font-size:1rem;
+    cursor:pointer;border:0;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    font-family:var(--font);
+  }
+  .btn svg{width:1.1em;height:1.1em}
+  .btn-gold{background:linear-gradient(180deg,var(--gold-500),var(--gold-600));color:#2a1e07;box-shadow:0 10px 24px -10px rgba(183,136,63,.7)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 30px -10px rgba(183,136,63,.8)}
+  .btn-green{background:var(--green-700);color:#fff}
+  .btn-green:hover{background:var(--green-800);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.1)}
+  .btn-outline{background:#fff;border:1.5px solid var(--line);color:var(--green-800)}
+  .btn-outline:hover{border-color:var(--green-500);transform:translateY(-2px)}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(18,36,31,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:.7em;color:#fff}
+  .brand .mark{width:38px;height:38px;flex:none}
+  .brand b{font-family:var(--serif);font-size:1.12rem;font-weight:600;letter-spacing:.01em;line-height:1.05}
+  .brand small{display:block;font-family:var(--font);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-400);font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:2rem}
+  .nav-links a{color:rgba(255,255,255,.82);font-size:.94rem;font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:#fff}
+  .nav .btn{padding:.6em 1.25em;font-size:.9rem}
+  .burger{display:none;background:none;border:0;color:#fff;cursor:pointer}
+  @media(max-width:860px){
+    .nav-links a:not(.btn){display:none}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    background:
+      radial-gradient(120% 120% at 85% 0%,rgba(201,155,79,.16),transparent 55%),
+      linear-gradient(160deg,var(--green-900),var(--green-700) 60%,var(--green-600));
+    color:#fff;
+  }
+  .hero::after{
+    content:"";position:absolute;inset:0;opacity:.5;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:22px 22px;
+  }
+  .hero-inner{
+    position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,64px);
+    align-items:center;padding:clamp(56px,8vw,104px) 0;
+  }
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.5rem);color:#fff;margin:.5em 0 .45em}
+  .hero h1 span{color:var(--gold-400)}
+  .hero p.lead{font-size:clamp(1.05rem,1.6vw,1.22rem);color:rgba(255,255,255,.85);max-width:34em;margin-bottom:2em}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:1rem}
+  .hero-stats{display:flex;gap:2.4rem;margin-top:2.8em;flex-wrap:wrap}
+  .hero-stats div b{font-family:var(--serif);font-size:1.7rem;color:var(--gold-400);display:block;line-height:1}
+  .hero-stats div span{font-size:.82rem;color:rgba(255,255,255,.7);letter-spacing:.02em}
+  .hero-art{position:relative;display:flex;justify-content:center}
+  .emblem{width:min(420px,90%);filter:drop-shadow(0 30px 50px rgba(0,0,0,.35))}
+  @media(max-width:860px){
+    .hero-inner{grid-template-columns:1fr;text-align:left}
+    .hero-art{order:-1;margin-bottom:.5rem}
+    .emblem{width:min(300px,72%)}
+  }
+
+  /* ---------- Trust strip ---------- */
+  .trust{background:var(--green-900);color:rgba(255,255,255,.75);border-top:1px solid rgba(255,255,255,.07)}
+  .trust .wrap{display:flex;flex-wrap:wrap;gap:1.4rem 2.6rem;padding:20px 40px;justify-content:center;font-size:.9rem}
+  .trust b{color:var(--gold-400)}
+  .trust .dot{display:inline-flex;align-items:center;gap:.55em}
+  .trust .dot svg{width:1.05em;height:1.05em;color:var(--gold-400)}
+
+  /* ---------- Section shell ---------- */
+  section.block{padding:clamp(64px,9vw,110px) 0}
+  .section-head{max-width:44rem;margin:0 auto 3rem;text-align:center}
+  .section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin:.4em 0 .35em}
+  .section-head p{color:var(--muted);font-size:1.08rem}
+
+  /* ---------- Self-test ---------- */
+  #selbsttest{background:linear-gradient(180deg,var(--cream),var(--cream-2))}
+  .test-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow);max-width:760px;margin:0 auto;overflow:hidden;
+  }
+  .test-top{
+    background:linear-gradient(120deg,var(--green-800),var(--green-600));color:#fff;
+    padding:22px clamp(22px,4vw,34px);display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  }
+  .test-top .t-title{display:flex;align-items:center;gap:.7em}
+  .test-top .t-title svg{width:26px;height:26px;color:var(--gold-400)}
+  .test-top b{font-family:var(--serif);font-size:1.15rem}
+  .test-top small{display:block;font-size:.75rem;color:rgba(255,255,255,.7);letter-spacing:.02em}
+  .progress{height:5px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden;flex:none;width:120px}
+  .progress i{display:block;height:100%;width:0;background:var(--gold-400);transition:width .35s ease}
+  .test-body{padding:clamp(26px,4.5vw,44px)}
+  .step-count{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-600);font-weight:700}
+  .q-title{font-family:var(--serif);font-size:clamp(1.3rem,2.6vw,1.75rem);margin:.5em 0 .25em;color:var(--green-900)}
+  .q-help{color:var(--muted);margin-bottom:1.6em;font-size:.98rem}
+  .options{display:grid;gap:.7rem}
+  .options.cols-2{grid-template-columns:1fr 1fr}
+  @media(max-width:520px){.options.cols-2{grid-template-columns:1fr}}
+  .opt{
+    display:flex;align-items:center;gap:.85em;width:100%;text-align:left;
+    padding:1em 1.15em;border:1.5px solid var(--line);border-radius:14px;background:#fff;
+    cursor:pointer;font-size:1rem;font-family:var(--font);color:var(--ink);
+    transition:border-color .15s,background .15s,transform .1s;
+  }
+  .opt:hover{border-color:var(--green-500);background:#fbfaf5}
+  .opt:active{transform:scale(.99)}
+  .opt .tick{
+    width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex:none;
+    display:grid;place-items:center;transition:all .15s;
+  }
+  .opt.selected{border-color:var(--green-600);background:#f2f7f2;box-shadow:0 0 0 2px rgba(47,95,78,.12)}
+  .opt.selected .tick{background:var(--green-600);border-color:var(--green-600)}
+  .opt.selected .tick svg{width:12px;height:12px;color:#fff}
+  .opt .tick svg{opacity:0}
+  .opt.selected .tick svg{opacity:1}
+  .test-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2em;gap:1rem}
+  .link-back{background:none;border:0;color:var(--muted);font-size:.95rem;cursor:pointer;font-family:var(--font);display:inline-flex;align-items:center;gap:.4em}
+  .link-back:hover{color:var(--green-700)}
+  .link-back[hidden]{visibility:hidden}
+  .hint{font-size:.85rem;color:var(--muted);text-align:center;margin-top:1.4em}
+
+  /* Result */
+  .result-banner{padding:clamp(26px,4vw,38px);color:#fff;text-align:center}
+  .result-banner .badge{display:inline-flex;align-items:center;gap:.5em;background:rgba(255,255,255,.2);padding:.4em 1em;border-radius:999px;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9em}
+  .result-banner h3{font-size:clamp(1.5rem,3.2vw,2.1rem);color:#fff;margin-bottom:.35em}
+  .result-banner p{color:rgba(255,255,255,.92);max-width:32em;margin:0 auto;font-size:1.02rem}
+  .r-red{background:linear-gradient(120deg,#8f2b24,var(--red-600))}
+  .r-amber{background:linear-gradient(120deg,#9a6a1c,var(--amber-600))}
+  .r-green{background:linear-gradient(120deg,#1f5f40,var(--ok-600))}
+  .result-body{padding:clamp(24px,4vw,40px)}
+  .r-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.6rem}
+  @media(max-width:560px){.r-cards{grid-template-columns:1fr}}
+  .r-card{border:1px solid var(--line);border-radius:14px;padding:1.2em 1.3em;background:#fff}
+  .r-card .lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;color:var(--gold-600);font-weight:700;display:flex;align-items:center;gap:.5em}
+  .r-card .lbl svg{width:1.1em;height:1.1em}
+  .r-card .val{font-family:var(--serif);font-size:1.35rem;color:var(--green-900);margin-top:.35em;line-height:1.25}
+  .r-card .sub{font-size:.88rem;color:var(--muted);margin-top:.3em}
+  .findings{background:var(--cream);border-radius:14px;padding:1.2em 1.4em;margin-bottom:1.6rem}
+  .findings h4{font-family:var(--font);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-bottom:.7em}
+  .findings ul{list-style:none;display:grid;gap:.5em}
+  .findings li{display:flex;align-items:flex-start;gap:.6em;font-size:.95rem}
+  .findings li svg{width:1.05em;height:1.05em;flex:none;margin-top:.2em}
+  .findings li.flag svg{color:var(--red-600)}
+  .findings li.warn svg{color:var(--amber-600)}
+  .findings li.good svg{color:var(--ok-600)}
+  .result-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+  .disclaimer{font-size:.82rem;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:12px;padding:1em 1.2em;margin-top:1.5rem;display:flex;gap:.7em;align-items:flex-start}
+  .disclaimer svg{width:1.2em;height:1.2em;flex:none;color:var(--gold-600);margin-top:.15em}
+
+  /* ---------- Services ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+  @media(max-width:860px){.grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .svc{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.7em 1.6em;transition:transform .2s,box-shadow .2s,border-color .2s}
+  .svc:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold-400)}
+  .svc .ic{width:52px;height:52px;border-radius:14px;background:linear-gradient(150deg,var(--green-700),var(--green-500));display:grid;place-items:center;margin-bottom:1em}
+  .svc .ic svg{width:26px;height:26px;color:var(--gold-400)}
+  .svc h3{font-size:1.18rem;color:var(--green-900);margin-bottom:.4em}
+  .svc p{color:var(--muted);font-size:.96rem}
+
+  /* ---------- Prophylaxe timeline ---------- */
+  #prophylaxe{background:var(--green-900);color:#fff}
+  #prophylaxe .section-head h2{color:#fff}
+  #prophylaxe .section-head p{color:rgba(255,255,255,.75)}
+  .timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:1rem}
+  @media(max-width:820px){.timeline{grid-template-columns:1fr}}
+  .tl{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:1.7em}
+  .tl .age{font-family:var(--serif);font-size:1.3rem;color:var(--gold-400)}
+  .tl .freq{font-size:2rem;font-family:var(--serif);margin:.15em 0 .1em}
+  .tl .freq small{font-size:.95rem;color:rgba(255,255,255,.7);font-family:var(--font)}
+  .tl p{color:rgba(255,255,255,.75);font-size:.94rem;margin-top:.5em}
+
+  /* ---------- Warning signs ---------- */
+  .signs{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem 1.6rem;max-width:900px;margin:0 auto}
+  @media(max-width:640px){.signs{grid-template-columns:1fr}}
+  .sign{display:flex;gap:.8em;align-items:flex-start;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1em 1.2em}
+  .sign svg{width:1.4em;height:1.4em;flex:none;color:var(--red-600);margin-top:.15em}
+  .sign b{color:var(--green-900);display:block;font-family:var(--font);font-weight:600}
+  .sign span{color:var(--muted);font-size:.92rem}
+
+  /* ---------- Team ---------- */
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;max-width:820px;margin:0 auto}
+  @media(max-width:640px){.team{grid-template-columns:1fr}}
+  .doc{display:flex;gap:1.1em;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.5em}
+  .doc .av{width:66px;height:66px;border-radius:50%;flex:none;background:linear-gradient(150deg,var(--green-700),var(--green-500));display:grid;place-items:center;color:var(--gold-400);font-family:var(--serif);font-size:1.5rem;font-weight:600}
+  .doc h3{font-size:1.15rem;color:var(--green-900);margin-bottom:.15em}
+  .doc p{color:var(--muted);font-size:.92rem}
+
+  /* ---------- CTA / contact ---------- */
+  #kontakt{background:linear-gradient(160deg,var(--green-800),var(--green-600));color:#fff}
+  .contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,60px);align-items:center}
+  @media(max-width:820px){.contact-grid{grid-template-columns:1fr}}
+  #kontakt h2{color:#fff;font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:.4em}
+  #kontakt .lead{color:rgba(255,255,255,.85);font-size:1.08rem;margin-bottom:1.8em;max-width:32em}
+  .contact-cta{display:flex;flex-wrap:wrap;gap:1rem}
+  .info-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius);padding:1.8em;display:grid;gap:1.1em}
+  .info-row{display:flex;gap:.9em;align-items:flex-start}
+  .info-row svg{width:1.3em;height:1.3em;flex:none;color:var(--gold-400);margin-top:.15em}
+  .info-row .k{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.6);font-weight:700}
+  .info-row .v{color:#fff;font-size:1.02rem}
+  .info-row a.v:hover{color:var(--gold-400)}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--green-900);color:rgba(255,255,255,.6);padding:40px 0 30px;font-size:.88rem}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:24px;margin-bottom:20px}
+  .foot-top .brand b{color:#fff}
+  footer .fnote{max-width:60ch}
+  footer a:hover{color:var(--gold-400)}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Zahnzentrum Pferdeklinik Niederlenz">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="23" stroke="#c99b4f" stroke-width="1.5"/>
+        <path d="M24 11c-5 0-8 3-8 8 0 3 1 5 1.5 9 .4 3 .8 8 2.5 8 1.4 0 1.3-4 2-6.5.3-1.1.6-1.9 2-1.9s1.7.8 2 1.9c.7 2.5.6 6.5 2 6.5 1.7 0 2.1-5 2.5-8 .5-4 1.5-6 1.5-9 0-5-3-8-8-8Z" fill="#f7f3ea"/>
+      </svg>
+      <span><b>Zahnzentrum</b><small>Pferdeklinik Niederlenz</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#selbsttest">Selbsttest</a>
+      <a href="#leistungen">Leistungen</a>
+      <a href="#prophylaxe">Prophylaxe</a>
+      <a href="#team">Team</a>
+      <a class="btn btn-gold" href="#kontakt">Termin anfragen</a>
+    </nav>
+  </div>
+</header>
+
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">Spezialisierte Pferde­zahnheilkunde</span>
+      <h1>Gesunde Zähne.<br><span>Zufriedene Pferde.</span></h1>
+      <p class="lead">Zahnprobleme bleiben oft lange unbemerkt – bis das Pferd schlecht frisst, abnimmt oder sich unterm Sattel wehrt. Machen Sie den <strong>Zahn-Selbsttest</strong> und erfahren Sie in 2&nbsp;Minuten, ob eine Vorstellung sinnvoll ist und wie oft Ihr Pferd zur Prophylaxe sollte.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#selbsttest">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Zahn-Selbsttest starten
+        </a>
+        <a class="btn btn-ghost" href="#leistungen">Unsere Leistungen</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>24/7</b><span>Notfalldienst, 365 Tage</span></div>
+        <div><b>3D</b><span>Bildgebung des Kiefers</span></div>
+        <div><b>&gt;40</b><span>Jahre Klinik-Erfahrung</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <!-- Emblem: molar tooth framed by a horseshoe -->
+      <svg class="emblem" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="g-shoe" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#d9b878"/><stop offset="1" stop-color="#b7883f"/>
+          </linearGradient>
+          <linearGradient id="g-tooth" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#efe8d8"/>
+          </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="180" fill="rgba(255,255,255,.04)" stroke="rgba(217,184,120,.3)" stroke-width="1.5"/>
+        <circle cx="200" cy="200" r="150" fill="none" stroke="rgba(217,184,120,.18)" stroke-width="1" stroke-dasharray="2 8"/>
+        <!-- horseshoe -->
+        <path d="M120 300c-30-22-46-58-46-100 0-70 47-118 126-118s126 48 126 118c0 42-16 78-46 100"
+              fill="none" stroke="url(#g-shoe)" stroke-width="26" stroke-linecap="round"/>
+        <!-- nail holes -->
+        <g fill="#12241f">
+          <circle cx="92" cy="196" r="4.5"/><circle cx="100" cy="150" r="4.5"/><circle cx="126" cy="115" r="4.5"/>
+          <circle cx="308" cy="196" r="4.5"/><circle cx="300" cy="150" r="4.5"/><circle cx="274" cy="115" r="4.5"/>
+        </g>
+        <!-- molar tooth -->
+        <path d="M200 130c-34 0-52 20-52 50 0 20 7 33 10 58 3 22 5 52 17 52 10 0 9-27 14-43 2-8 4-13 11-13s9 5 11 13c5 16 4 43 14 43 12 0 14-30 17-52 3-25 10-38 10-58 0-30-18-50-52-50Z"
+              fill="url(#g-tooth)" stroke="#b7883f" stroke-width="2"/>
+        <path d="M200 150c-16 0-24 9-24 22M200 150c16 0 24 9 24 22" stroke="#c99b4f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust">
+  <div class="wrap">
+    <span class="dot"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Z"/></svg> Präventiv · Diagnostisch · Therapeutisch</span>
+    <span class="dot"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 0 0-5 5c0 3 5 15 5 15s5-12 5-15a5 5 0 0 0-5-5Z"/></svg> Im Stall oder in der Klinik</span>
+    <span class="dot"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4Zm-1 15-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7Z"/></svg> Geführt von <b>Dr. S. Moine</b> &amp; <b>Dr. C. Czech</b></span>
+  </div>
+</div>
+
+<!-- ============ SELF-TEST ============ -->
+<section class="block" id="selbsttest">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Kernstück</span>
+      <h2>Der Zahn-Selbsttest für Pferdebesitzer</h2>
+      <p>Beantworten Sie ein paar kurze Fragen zu Ihrem Pferd. Am Ende erhalten Sie eine individuelle Einschätzung: ob eine Vorstellung beim Zahnarzt ratsam ist – und in welchem Rhythmus eine Prophylaxe sinnvoll wäre.</p>
+    </div>
+
+    <div class="test-card reveal" id="testCard">
+      <div class="test-top">
+        <div class="t-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 4c-4 0-6 2.4-6 6 0 2.5 1 4 1.4 7 .4 2.7.7 5 1.9 5 1.2 0 1.1-3 1.7-5 .3-1 .6-1.6 1-1.6s.7.6 1 1.6c.6 2 .5 5 1.7 5 1.2 0 1.5-2.3 1.9-5 .4-3 1.4-4.5 1.4-7 0-3.6-2-6-6-6Z"/></svg>
+          <div><b>Zahn-Check</b><small id="stepLabel">Schritt 1 von 8</small></div>
+        </div>
+        <div class="progress"><i id="bar"></i></div>
+      </div>
+      <div class="test-body" id="testBody"><!-- rendered by JS --></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="block" id="leistungen" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Leistungen</span>
+      <h2>Rundum-Versorgung für das Pferdegebiss</h2>
+      <p>Modernste Medizintechnik trifft auf langjährige Erfahrung – für die bestmögliche Versorgung Ihres Pferdes.</p>
+    </div>
+    <div class="grid">
+      <div class="svc reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 14h16M6 14l-1 5M18 14l1 5M8 14l.5 4M16 14l-.5 4M12 14v5"/><path d="M4 14c0-5 3-8 8-8s8 3 8 8"/></svg></div>
+        <h3>Zahnkorrektur &amp; Raspeln</h3>
+        <p>Regelmässiges Abschleifen scharfer Kanten und Haken, die Zunge und Backenschleimhaut verletzen und das Kauen behindern.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg></div>
+        <h3>Kontrolle &amp; Diagnostik</h3>
+        <p>Vollständige Maulhöhlen-Untersuchung und 3D-Bildgebung des Kiefers – Diagnosen auf humanmedizinischem Niveau.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v4M16 3v4M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M9 14l2 2 4-4"/></svg></div>
+        <h3>Zahnstein &amp; Prophylaxe</h3>
+        <p>Entfernung von Zahnstein zur Vorbeugung von Zahnfleischentzündung und Parodontitis – im Stall oder in der Klinik.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3.5 0-5 2-5 5 0 2 .8 3.2 1.2 5.5.3 2 .4 4.5 1.5 4.5.9 0 1-2 1.3-3.5"/><path d="M12 3c3.5 0 5 2 5 5 0 2-.8 3.2-1.2 5.5-.3 2-.4 4.5-1.5 4.5-.9 0-1-2-1.3-3.5"/><path d="M12 14v7"/></svg></div>
+        <h3>Zahnzwischenräume</h3>
+        <p>Behandlung veränderter oder entzündeter Zahnzwischenräume (Diastema) – häufige Ursache versteckter Schmerzen.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c-4 0-6 2-6 6 0 3 1.5 4 2 7s.5 3 1.5 3M12 4c4 0 6 2 6 6 0 3-1.5 4-2 7"/><path d="M12 11v10M9 21h6"/></svg></div>
+        <h3>Wurzelbehandlung</h3>
+        <p>Bei Infektionen oder Abszessen an der Zahnwurzel – konservativ mit Antibiotika oder chirurgisch, je nach Befund.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="M12 8v5M9.5 10.5h5"/></svg></div>
+        <h3>24h-Notfalldienst</h3>
+        <p>Das Zahnzentrum ist über die Pferdeklinik AG rund um die Uhr, 365 Tage im Jahr, für Notfälle erreichbar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROPHYLAXE ============ -->
+<section class="block" id="prophylaxe">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="color:var(--gold-400)">Vorsorge</span>
+      <h2>Wie oft sollte eine Zahnkontrolle sein?</h2>
+      <p>Pferde zeigen Zahnschmerzen kaum – ihr Fluchttierinstinkt lässt sie leiden, ohne zu klagen. Regelmässige Kontrollen erkennen Probleme früh, bevor sie schmerzhaft und teuer werden. Als Orientierung:</p>
+    </div>
+    <div class="timeline">
+      <div class="tl reveal">
+        <div class="age">Jungpferd</div>
+        <div class="freq">alle 6&nbsp;<small>Monate</small></div>
+        <p>Bis ca. 5 Jahre: Zahnwechsel, Milchzahnkappen und Wolfszähne brauchen engmaschige Begleitung.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="age">Erwachsenes Pferd</div>
+        <div class="freq">1× <small>jährlich</small></div>
+        <p>5–16 Jahre: Eine jährliche Kontrolle genügt in der Regel, um Haken und Fehlstellungen früh zu korrigieren.</p>
+      </div>
+      <div class="tl reveal">
+        <div class="age">Seniorpferd</div>
+        <div class="freq">alle 6–12&nbsp;<small>Monate</small></div>
+        <p>Ab ca. 17 Jahren: Abnutzung, Lücken und EOTRH machen häufigere Kontrollen sinnvoll.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:2rem;color:rgba(255,255,255,.7);font-size:.95rem">Bei Auffälligkeiten gilt immer: nicht auf den nächsten Termin warten – zeitnah abklären lassen.</p>
+  </div>
+</section>
+
+<!-- ============ WARNING SIGNS ============ -->
+<section class="block" id="warnzeichen" style="background:var(--cream)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Worauf Sie achten sollten</span>
+      <h2>Warnzeichen für Zahnprobleme</h2>
+      <p>Diese Anzeichen deuten auf mögliche Probleme im Maul hin. Kommt Ihnen etwas bekannt vor? Der Selbsttest ordnet es für Sie ein.</p>
+    </div>
+    <div class="signs">
+      <div class="sign reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div><b>Fressen &amp; Futter</b><span>Langsames Fressen, Futter fällt aus dem Maul, „Wickelkauen“, ganze Fasern im Kot</span></div></div>
+      <div class="sign reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div><b>Gewicht &amp; Kondition</b><span>Gewichtsverlust oder schlechter Ernährungszustand trotz ausreichend Futter</span></div></div>
+      <div class="sign reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div><b>Maul &amp; Nase</b><span>Übler Maulgeruch, vermehrtes Speicheln, einseitiger Nasenausfluss</span></div></div>
+      <div class="sign reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div><b>Zahnfleisch &amp; Kiefer</b><span>Gerötetes oder blutendes Zahnfleisch, Schwellungen am Kieferrand</span></div></div>
+      <div class="sign reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div><b>Kopf &amp; Reiten</b><span>Kopfscheu, Wehren beim Auftrensen, Kopfschlagen, gegen das Gebiss gehen</span></div></div>
+      <div class="sign reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg><div><b>Verhalten</b><span>Leistungsabfall, Unlust, allgemeine Verhaltensänderung ohne erkennbaren Grund</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section class="block" id="team" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Expertise</span>
+      <h2>Ihr Zahnzentrum-Team</h2>
+      <p>Das Zahnzentrum wird von international anerkannten Spezialisten geführt.</p>
+    </div>
+    <div class="team">
+      <div class="doc reveal">
+        <div class="av">SM</div>
+        <div>
+          <h3>Dr. Sébastien Moine</h3>
+          <p>International renommierter Zahnexperte – spezialisiert auf komplexe Zahn- und Kiefererkrankungen des Pferdes.</p>
+        </div>
+      </div>
+      <div class="doc reveal">
+        <div class="av">CC</div>
+        <div>
+          <h3>Dr. Christian Czech</h3>
+          <p>Mitglied der Klinikleitung der Pferdeklinik Niederlenz und Mitverantwortlicher des Zahnzentrums.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / CTA ============ -->
+<section class="block" id="kontakt">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--gold-400)">Termin vereinbaren</span>
+      <h2>Lassen Sie das Gebiss Ihres Pferdes prüfen</h2>
+      <p class="lead">Ob als Ergebnis Ihres Selbsttests oder für die reguläre Vorsorge – unser Team berät Sie gerne und findet einen Termin, bei Ihnen im Stall oder in der Klinik.</p>
+      <div class="contact-cta">
+        <a class="btn btn-gold" href="tel:+41628853020">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+          +41 62 885 30 20
+        </a>
+        <a class="btn btn-ghost" href="#selbsttest">Erst Selbsttest machen</a>
+      </div>
+    </div>
+    <div class="info-card reveal">
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.3 7-12a7 7 0 1 0-14 0c0 5.7 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <div><div class="k">Adresse</div><div class="v">Hummelweg 10<br>CH-5702 Niederlenz</div></div>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+        <div><div class="k">Telefon</div><a class="v" href="tel:+41628853020">+41 62 885 30 20</a></div>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><div class="k">Sprechzeiten</div><div class="v">Mo–Fr 08:00–20:00 Uhr<br><span style="color:var(--gold-400);font-size:.9rem">Notfälle: 24 h · 365 Tage</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#top">
+        <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" stroke="#c99b4f" stroke-width="1.5"/>
+          <path d="M24 11c-5 0-8 3-8 8 0 3 1 5 1.5 9 .4 3 .8 8 2.5 8 1.4 0 1.3-4 2-6.5.3-1.1.6-1.9 2-1.9s1.7.8 2 1.9c.7 2.5.6 6.5 2 6.5 1.7 0 2.1-5 2.5-8 .5-4 1.5-6 1.5-9 0-5-3-8-8-8Z" fill="#f7f3ea"/>
+        </svg>
+        <span><b>Zahnzentrum</b><small style="color:var(--gold-400)">Pferdeklinik Niederlenz</small></span>
+      </a>
+      <nav style="display:flex;gap:1.6rem;flex-wrap:wrap">
+        <a href="#selbsttest">Selbsttest</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#prophylaxe">Prophylaxe</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+    <p class="fnote"><strong>Wichtiger Hinweis:</strong> Der Zahn-Selbsttest dient ausschliesslich einer ersten Orientierung und ersetzt keine tierärztliche Untersuchung. Bei Beschwerden oder Unsicherheit wenden Sie sich bitte immer an das Zahnzentrum oder Ihren Tierarzt.</p>
+    <p style="margin-top:14px">© <span id="year"></span> Pferdeklinik Niederlenz AG · Hummelweg 10 · CH-5702 Niederlenz</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   ZAHN-SELBSTTEST – Logik
+   ============================================================ */
+(function(){
+  "use strict";
+
+  /* ---- Fragen-Definition ----
+     type: "single"  = eine Antwort
+     Jede Option: {label, points, flag?, help?, meta?}
+       - points: fliessen in die Gesamtbewertung ein
+       - flag:   true = akutes Warnzeichen -> sofortige Vorstellung
+     Die erste Frage (age) und zweite (lastcheck) steuern das Prophylaxe-Intervall. */
+  const QUESTIONS = [
+    {
+      id:"age", kind:"base",
+      title:"Wie alt ist Ihr Pferd?",
+      help:"Das Alter bestimmt, wie engmaschig die Zähne kontrolliert werden sollten.",
+      cols:1,
+      options:[
+        {label:"Jungpferd – bis ca. 5 Jahre", val:"young"},
+        {label:"Erwachsen – ca. 5 bis 16 Jahre", val:"adult"},
+        {label:"Senior – ab ca. 17 Jahren", val:"senior"}
+      ]
+    },
+    {
+      id:"lastcheck", kind:"base",
+      title:"Wann wurden die Zähne zuletzt kontrolliert?",
+      help:"Eine professionelle Zahnkontrolle durch den Tierarzt, nicht nur eine Sichtkontrolle.",
+      cols:1,
+      options:[
+        {label:"Innerhalb der letzten 6 Monate", val:"lt6", points:0},
+        {label:"Vor 6 bis 12 Monaten", val:"6to12", points:0},
+        {label:"Vor 1 bis 2 Jahren", val:"1to2", points:2},
+        {label:"Vor über 2 Jahren oder unbekannt", val:"gt2", points:3}
+      ]
+    },
+    {
+      id:"eating",
+      title:"Frisst Ihr Pferd anders als gewohnt?",
+      help:"z. B. langsamer, wählerischer, verweigert hartes Futter oder Heu.",
+      options:[
+        {label:"Nein, frisst normal", points:0},
+        {label:"Manchmal / leicht verändert", points:1},
+        {label:"Ja, deutlich verändert", points:2, note:"Verändertes Fressverhalten"}
+      ]
+    },
+    {
+      id:"dropping",
+      title:"Fällt Futter beim Kauen aus dem Maul oder bildet Ihr Pferd Futter­wickel („Wickelkauen“)?",
+      help:"Halb gekaute, zusammengerollte Heuballen im Trog oder auf dem Boden sind ein typisches Zeichen.",
+      options:[
+        {label:"Nein", points:0},
+        {label:"Ja, das kommt vor", points:3, flag:true, note:"Futter fällt aus dem Maul / Wickelkauen"}
+      ]
+    },
+    {
+      id:"manure",
+      title:"Finden Sie unverdaute, lange Futterfasern oder ganze Körner im Kot?",
+      help:"Ein Hinweis, dass das Futter nicht ausreichend zerkleinert wird.",
+      options:[
+        {label:"Nein", points:0},
+        {label:"Ja", points:2, note:"Unverdaute Fasern im Kot"}
+      ]
+    },
+    {
+      id:"weight",
+      title:"Hat Ihr Pferd an Gewicht verloren oder wirkt es in schlechtem Ernährungs­zustand?",
+      help:"Trotz gleichbleibender oder ausreichender Futtermenge.",
+      options:[
+        {label:"Nein", points:0},
+        {label:"Ja", points:3, flag:true, note:"Gewichtsverlust / schlechter Zustand"}
+      ]
+    },
+    {
+      id:"smellnose",
+      title:"Bemerken Sie üblen Maulgeruch oder einseitigen Nasenausfluss?",
+      help:"Einseitiger, evtl. übelriechender Nasenausfluss kann auf eine Zahnwurzel-Infektion hindeuten.",
+      options:[
+        {label:"Nein, nichts dergleichen", points:0},
+        {label:"Ja, übler Maulgeruch", points:2, note:"Übler Maulgeruch"},
+        {label:"Ja, einseitiger Nasenausfluss", points:3, flag:true, note:"Einseitiger Nasenausfluss"}
+      ]
+    },
+    {
+      id:"gums",
+      title:"Sehen Sie gerötetes, geschwollenes oder blutendes Zahnfleisch – oder eine Schwellung am Kiefer?",
+      help:"Soweit von aussen bzw. an den Schneidezähnen erkennbar.",
+      options:[
+        {label:"Nein", points:0},
+        {label:"Ja", points:3, flag:true, note:"Zahnfleisch-/Kieferveränderung"}
+      ]
+    },
+    {
+      id:"head",
+      title:"Ist Ihr Pferd empfindlich am Kopf oder wehrt es sich beim Auftrensen?",
+      help:"z. B. kopfscheu, Zähneknirschen, Abwehr beim Anfassen des Mauls.",
+      options:[
+        {label:"Nein", points:0},
+        {label:"Manchmal", points:1},
+        {label:"Ja, deutlich", points:2, note:"Empfindlichkeit am Kopf / beim Trensen"}
+      ]
+    },
+    {
+      id:"ridden",
+      title:"Gibt es Probleme unterm Sattel, die zum Gebiss passen könnten?",
+      help:"z. B. Kopfschlagen, gegen das Gebiss gehen, einseitige Anlehnung, Verwerfen im Genick.",
+      options:[
+        {label:"Nein / reite nicht", points:0},
+        {label:"Ja, solche Auffälligkeiten kommen vor", points:2, note:"Probleme unterm Sattel"}
+      ]
+    },
+    {
+      id:"carrot",
+      title:"Möhren-Test: Beisst Ihr Pferd eine ganze Karotte normal und kräftig mit den Schneidezähnen ab?",
+      help:"Bieten Sie eine ganze Möhre an. Zögerliches, einseitiges oder unsauberes Abbeissen kann auf empfindliche Zähne hindeuten.",
+      options:[
+        {label:"Ja, ganz normal", points:0},
+        {label:"Zögerlich / einseitig / unsauber", points:2, note:"Auffälliger Möhren-Test"}
+      ]
+    }
+  ];
+
+  const state = { step:0, answers:{} };
+  const body = document.getElementById("testBody");
+  const bar = document.getElementById("bar");
+  const stepLabel = document.getElementById("stepLabel");
+  const TOTAL = QUESTIONS.length;
+
+  function updateProgress(){
+    const pct = (state.step / TOTAL) * 100;
+    bar.style.width = pct + "%";
+    stepLabel.textContent = state.step < TOTAL
+      ? "Schritt " + (state.step+1) + " von " + TOTAL
+      : "Auswertung";
+  }
+
+  function renderQuestion(){
+    const q = QUESTIONS[state.step];
+    updateProgress();
+    const chosen = state.answers[q.id];
+    const cols = q.cols === 1 ? "" : (q.options.length === 2 ? " cols-2" : "");
+    let html = '<div class="step-count">Frage '+(state.step+1)+' / '+TOTAL+'</div>';
+    html += '<h3 class="q-title">'+q.title+'</h3>';
+    if(q.help) html += '<p class="q-help">'+q.help+'</p>';
+    html += '<div class="options'+cols+'">';
+    q.options.forEach(function(o,i){
+      const sel = chosen && chosen.i === i ? " selected" : "";
+      html += '<button class="opt'+sel+'" data-i="'+i+'">'
+            +   '<span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>'
+            +   '<span>'+o.label+'</span>'
+            + '</button>';
+    });
+    html += '</div>';
+    html += '<div class="test-nav">'
+          +   '<button class="link-back" id="backBtn"'+(state.step===0?' hidden':'')+'>'
+          +     '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Zurück'
+          +   '</button>'
+          +   '<span></span>'
+          + '</div>';
+    html += '<p class="hint">Wählen Sie eine Antwort, um fortzufahren.</p>';
+    body.innerHTML = html;
+
+    body.querySelectorAll(".opt").forEach(function(btn){
+      btn.addEventListener("click", function(){
+        const i = +btn.getAttribute("data-i");
+        state.answers[q.id] = Object.assign({i:i}, q.options[i]);
+        // kleine visuelle Bestätigung, dann weiter
+        body.querySelectorAll(".opt").forEach(function(b){b.classList.remove("selected")});
+        btn.classList.add("selected");
+        setTimeout(next, 220);
+      });
+    });
+    const back = document.getElementById("backBtn");
+    if(back) back.addEventListener("click", prev);
+  }
+
+  function next(){
+    if(state.step < TOTAL-1){ state.step++; renderQuestion(); scrollCard(); }
+    else { state.step = TOTAL; renderResult(); scrollCard(); }
+  }
+  function prev(){
+    if(state.step === TOTAL){ state.step = TOTAL-1; renderQuestion(); }
+    else if(state.step > 0){ state.step--; renderQuestion(); }
+    scrollCard();
+  }
+  function scrollCard(){
+    const card = document.getElementById("testCard");
+    const y = card.getBoundingClientRect().top + window.scrollY - 90;
+    if(window.scrollY > y || state.step>0) window.scrollTo({top:y, behavior:"smooth"});
+  }
+
+  /* ---- Auswertung ---- */
+  function evaluate(){
+    const a = state.answers;
+    let points = 0, flags = [], notes = [];
+    QUESTIONS.forEach(function(q){
+      const ans = a[q.id];
+      if(!ans) return;
+      if(typeof ans.points === "number") points += ans.points;
+      if(ans.flag) flags.push(ans.note || q.title);
+      else if(ans.note) notes.push(ans.note);
+    });
+
+    // Dringlichkeit der Tierarzt-Vorstellung
+    let level; // "red" | "amber" | "green"
+    if(flags.length > 0 || points >= 6) level = "red";
+    else if(points >= 2) level = "amber";
+    else level = "green";
+
+    // Basis-Intervall nach Alter
+    const age = a.age ? a.age.val : "adult";
+    let base;
+    if(age === "young") base = {months:6, text:"alle 6 Monate"};
+    else if(age === "senior") base = {months:9, text:"alle 6–12 Monate"};
+    else base = {months:12, text:"1× jährlich"};
+
+    // Empfohlenes Prophylaxe-Intervall (ggf. verkürzt)
+    let interval, intervalSub;
+    if(level === "red"){
+      interval = "Jetzt vorstellen";
+      intervalSub = "Danach Intervall gemeinsam mit dem Zahnzentrum festlegen.";
+    } else if(level === "amber"){
+      interval = age === "adult" ? "alle 6 Monate" : base.text;
+      intervalSub = "Engmaschiger als üblich, bis die Auffälligkeiten geklärt sind.";
+    } else {
+      interval = base.text;
+      intervalSub = "Routine-Vorsorge passend zum Alter Ihres Pferdes.";
+    }
+
+    // Hinweis, wenn letzte Kontrolle lange her
+    const lc = a.lastcheck ? a.lastcheck.val : null;
+    let overdue = (lc === "1to2" || lc === "gt2");
+
+    return {points, flags, notes, level, interval, intervalSub, base, overdue, age};
+  }
+
+  function renderResult(){
+    updateProgress();
+    bar.style.width = "100%";
+    const r = evaluate();
+
+    const cfg = {
+      red:{
+        cls:"r-red",
+        badge:"Vorstellung empfohlen",
+        h:"Bitte lassen Sie Ihr Pferd untersuchen",
+        p: r.flags.length
+          ? "Ihre Angaben enthalten deutliche Warnzeichen. Wir empfehlen, das Zahnzentrum zeitnah zu kontaktieren, um Schmerzen oder eine ernstere Erkrankung auszuschliessen."
+          : "Es haben sich mehrere Auffälligkeiten summiert. Eine Vorstellung beim Zahnzentrum ist ratsam, um die Ursache abzuklären."
+      },
+      amber:{
+        cls:"r-amber",
+        badge:"Beobachten & abklären",
+        h:"Eine Kontrolle wäre sinnvoll",
+        p:"Einzelne Anzeichen deuten auf mögliche Zahnprobleme hin. Wir empfehlen, eine Kontrolle einzuplanen und Ihr Pferd im Auge zu behalten."
+      },
+      green:{
+        cls:"r-green",
+        badge:"Unauffällig",
+        h:"Aktuell keine akuten Warnzeichen",
+        p:"Sie haben keine deutlichen Auffälligkeiten angegeben. Halten Sie die regelmässige Vorsorge ein, damit das auch so bleibt."
+      }
+    }[r.level];
+
+    // Befund-Liste
+    let findings = "";
+    const allNotes = r.flags.map(function(f){return {t:f, c:"flag"}})
+                     .concat(r.notes.map(function(n){return {t:n, c:"warn"}}));
+    if(r.overdue) allNotes.push({t:"Letzte Zahnkontrolle liegt länger zurück", c:"warn"});
+
+    if(allNotes.length){
+      findings = '<div class="findings"><h4>Ihre Angaben im Überblick</h4><ul>';
+      allNotes.forEach(function(n){
+        const icon = n.c==="flag"
+          ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>'
+          : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>';
+        findings += '<li class="'+n.c+'">'+icon+'<span>'+n.t+'</span></li>';
+      });
+      findings += '</ul></div>';
+    } else {
+      findings = '<div class="findings"><h4>Ihre Angaben im Überblick</h4><ul>'
+        + '<li class="good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Keine der abgefragten Auffälligkeiten angegeben.</span></li>'
+        + '</ul></div>';
+    }
+
+    const html =
+      '<div class="result-banner '+cfg.cls+'">'
+      + '<span class="badge">'+cfg.badge+'</span>'
+      + '<h3>'+cfg.h+'</h3>'
+      + '<p>'+cfg.p+'</p>'
+      + '</div>'
+      + '<div class="result-body">'
+      +   '<div class="r-cards">'
+      +     '<div class="r-card">'
+      +       '<div class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg> Empfehlung Tierarzt</div>'
+      +       '<div class="val">'+({red:"Zeitnah vorstellen",amber:"Kontrolle einplanen",green:"Keine akute Vorstellung nötig"}[r.level])+'</div>'
+      +       '<div class="sub">'+(r.level==="green"?"Weiterhin regelmässig vorsorgen.":"Ursache fachlich abklären lassen.")+'</div>'
+      +     '</div>'
+      +     '<div class="r-card">'
+      +       '<div class="lbl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Empfohlenes Intervall</div>'
+      +       '<div class="val">'+r.interval+'</div>'
+      +       '<div class="sub">'+r.intervalSub+'</div>'
+      +     '</div>'
+      +   '</div>'
+      +   findings
+      +   '<div class="result-cta">'
+      +     '<a class="btn btn-green" href="tel:+41628853020"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg> Termin anfragen: +41 62 885 30 20</a>'
+      +     '<button class="btn btn-outline" id="restart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg> Test neu starten</button>'
+      +   '</div>'
+      +   '<div class="disclaimer">'
+      +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>'
+      +     '<span>Dieser Selbsttest ersetzt keine tierärztliche Untersuchung. Er hilft Ihnen nur, die Dringlichkeit einzuschätzen. Im Zweifel – und bei akuten Beschwerden – kontaktieren Sie bitte immer das Zahnzentrum oder Ihren Tierarzt.</span>'
+      +   '</div>'
+      + '</div>';
+
+    body.innerHTML = html;
+    document.getElementById("restart").addEventListener("click", function(){
+      state.step = 0; state.answers = {}; renderQuestion(); scrollCard();
+    });
+  }
+
+  // Start
+  renderQuestion();
+
+  /* ---- Sonstiges ---- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Scroll-Reveal
+  if("IntersectionObserver" in window){
+    const io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:.12});
+    document.querySelectorAll(".reveal").forEach(function(el,i){
+      el.style.transitionDelay = (i%3)*0.08 + "s";
+      io.observe(el);
+    });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in")});
+  }
+})();
+</script>
+</body>
+</html>
